@@ -200,13 +200,13 @@ sub file {
     my $res = $parser->response;
     confess "Cannot get file: ", $res->as_string, " " unless $res->is_success;
     return AWS::S3::File->new(
-        bucket       => $s,
-        key          => $key || undef,
-        size         => $res->header( 'content-length' ) || undef,
-        contenttype  => $res->header( 'content-type' ) || 'application/octet-stream',
-        etag         => $res->header( 'etag' ) || undef,
-        lastmodified => $res->header( 'last-modified' ) || undef,
-        is_encrypted => ( $res->header( 'x-amz-server-side-encryption' ) || '' ) eq 'AES256' ? 1 : 0,
+        bucket          => $s,
+        key             => $key || undef,
+        size            => $res->header( 'content-length' ) || undef,
+        content_type    => $res->header( 'content-type' ) || 'application/octet-stream',
+        etag            => $res->header( 'etag' ) || undef,
+        lastmodified    => $res->header( 'last-modified' ) || undef,
+        is_encrypted    => ( $res->header( 'x-amz-server-side-encryption' ) || '' ) eq 'AES256' ? 1 : 0,
     );
 }    # end file()
 

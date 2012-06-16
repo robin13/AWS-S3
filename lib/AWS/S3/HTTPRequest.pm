@@ -61,7 +61,7 @@ has 'metadata' => (
     default  => sub { {} },
 );
 
-has 'contenttype' => (
+has 'content_type' => (
     is       => 'ro',
     required => 0,
     isa      => 'Str',

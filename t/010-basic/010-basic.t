@@ -207,17 +207,17 @@ if(0) {
       ok( $bucket->add_file(
         key         => "$ct_name.dat",
         contents    => \( 'This is '. $ct ),
-        contenttype => $ct
+        content_type => $ct
       ), "Put file with content type $ct" );
       
       # read file
       my $ct_file = $bucket->file( "$ct_name.dat" );
-      ok( $ct_file && $ct_file->contenttype eq $ct, 'Content type '. $ct. ' read' );
+      ok( $ct_file && $ct_file->content_type eq $ct, 'Content type '. $ct. ' read' );
       
       # change content type
-      $ct_file->update( contenttype => 'text/csv' );
+      $ct_file->update( content_type => 'text/csv' );
       $ct_file = $bucket->file( "$ct_name.dat" );
-      ok( $ct_file && $ct_file->contenttype eq 'text/csv', 'Content type '. $ct. ' changed to text/csv' );
+      ok( $ct_file && $ct_file->content_type eq 'text/csv', 'Content type '. $ct. ' changed to text/csv' );
       
       # remove file
       $ct_file->delete();
